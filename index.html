@@ -4,10 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style/reset.css">
     <link rel="stylesheet" href="style/index.css">
     <link rel="stylesheet" href="style/menu.css">
     <link rel="stylesheet" href="style/container.css">
+    <link rel="stylesheet" href="style/entryRegister.css">
     <title>Document</title>
 </head>
 
@@ -70,22 +75,241 @@
             <p class="entry-title">Cadastro de Entrada</p>
             <div class="entry-form-container">
                 <div class="entry-form">
-                    <input type="text" name="name">
-                    <input type="text" name="name">
-                    <input type="text" name="name">
-                    <input type="text" name="name">
-                    <input type="text" name="name">
-                    <input type="text" name="name">
-                    <select name="plans" id="plans">
-                        <option value="">Planos</option>
-                    </select>
+                    <div class="entry-form-name">
+                        <p>Nome Cliente:</p>
+                        <input type="text" name="name">
+                    </div>
+
+                    <div class="entry-form-rg">
+                        <p>R.G:</p>
+                        <input type="text" name="rg">
+                    </div>
+
+                    <div class="entry-form-phone">
+                        <p>Telefone:</p>
+                        <input type="text" name="phone">
+                    </div>
+
+                    <div class="entry-form-email">
+                        <p>Email:</p>
+                        <input type="text" name="email">
+                    </div>
+
+                    <div class="entry-form-board">
+                        <p>Placa:</p>
+                        <input type="text" name="board">
+                    </div>
+
+                    <div class="entry-form-plans">
+                        <p>Planos:</p>
+                        <select name="plans" id="plans">
+                            <option value="">Planos</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="entry-form-button">
                     <button id="registerEntry">Registrar</button>
                 </div>
             </div>
             <p class="entry-register-title">Registro de Entradas</p>
-            <div class="entry-reister-table"></div>
+            <div class="entry-reister-table-container">
+                <table class="entry-reister-table">
+                    <tr class="entry-reister-table-title">
+                        <th>Cliente</th>
+                        <th>Placa</th>
+                        <th>Telefone</th>
+                        <th>Vaga</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                   
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                   
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                     <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                   
+                   
+                </table>
+            </div>
         </div>
 
     </div>

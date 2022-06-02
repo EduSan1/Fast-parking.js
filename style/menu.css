@@ -84,5 +84,6 @@
 }
 
 .shortcut-text > p {
-    color: azure;
+    color: #fff;
+    font-size: clamp(8px, 1vw, 24px);
 }
