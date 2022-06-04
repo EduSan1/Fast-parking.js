@@ -5,6 +5,7 @@
   align-items: center;
   flex-direction: column;
   color: white;
+  padding: 5%;
 }
 
 .plans-register-title,
@@ -14,7 +15,6 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  padding-left: 5%;
   font-size: clamp(4px, 1.5vw, 24px);
 }
 
@@ -23,7 +23,7 @@
   height: 25%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 5%;
 }
 
