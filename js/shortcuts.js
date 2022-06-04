@@ -1,82 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+const shortcutEntry = document.getElementById("shortcutEntry")
+const shortcutExit = document.getElementById("shortcutExit")
+const shortcutMove = document.getElementById("shortcutMove")
+const shortcutPlans = document.getElementById("shortcutPlans")
+const shortcutReports = document.getElementById("shortcutReports")
+const mainContainer = document.getElementById("container")
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300;400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style/reset.css">
-    <link rel="stylesheet" href="style/index.css">
-    <script src="js/shortcuts.js" defer></script>
-    <link rel="stylesheet" href="style/plans.css">
-    <link rel="stylesheet" href="style/moveCar.css">
-    <link rel="stylesheet" href="style/reports.css">
-    <link rel="stylesheet" href="style/exitRegister.css">
-    <link rel="stylesheet" href="style/menu.css">
-    <link rel="stylesheet" href="style/container.css">
-    <link rel="stylesheet" href="style/entryRegister.css">
-    <title>Fast Parking</title>
-</head>
+const changePage = (shortcut) => {
 
-<body>
-
-    <div class="menu">
-        <div class="menu-image">
-            <img src="assets/images/logo.png" alt="">
-        </div>
-        <div class="menu-shortcuts">
-            <div id="shortcutEntry" class="shortcut-container">
-                <div class="shortcut-image">
-                    <img src="assets/icons/entrada.png" alt="">
-                </div>
-                <div class="shortcut-text">
-                    <p>Entrada</p>
-                </div>
-            </div>
-
-            <div id="shortcutExit" class="shortcut-container">
-                <div class="shortcut-image">
-                    <img src="assets/icons/saida.png" alt="">
-                </div>
-                <div class="shortcut-text">
-                    <p>Saída</p>
-                </div>
-            </div>
-
-            <div id="shortcutMove" class="shortcut-container">
-                <div class="shortcut-image">
-                    <img src="assets/icons/mover.png" alt="">
-                </div>
-                <div class="shortcut-text">
-                    <p>Mover Veiculo</p>
-                </div>
-            </div>
-
-            <div id="shortcutPlans" class="shortcut-container">
-                <div class="shortcut-image">
-                    <img src="assets/icons/planos.png" alt="">
-                </div>
-                <div class="shortcut-text">
-                    <p>Planos</p>
-                </div>
-            </div>
-
-            <div id="shortcutReports" class="shortcut-container">
-                <div class="shortcut-image">
-                    <img src="assets/icons/relatorio.png" alt="">
-                </div>
-                <div class="shortcut-text">
-                    <p>Relatórios</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="container" class="main-container">
-
-        <!-- <div class="entry-container">
+    mainContainer.replaceChildren()
+{/* <div class="entry-container">
             <p class="entry-title">Cadastro de Entrada</p>
             <div class="entry-form-container">
                 <div class="entry-form">
@@ -315,9 +247,253 @@
                    
                 </table>
             </div>
-        </div> -->
+        </div> */}
+    if (shortcut.id == "shortcutEntry") {
+        mainContainer.innerHTML = `  
+        <div class="entry-container">
+            <p class="entry-title">Cadastro de Entrada</p>
+            <div class="entry-form-container">
+                <div class="entry-form">
+                    <div class="entry-form-name">
+                        <p>Nome Cliente:</p>
+                        <input type="text" name="name">
+                    </div>
 
-        <!-- <div class="exit-container">
+                    <div class="entry-form-rg">
+                        <p>R.G:</p>
+                        <input type="text" name="rg">
+                    </div>
+
+                    <div class="entry-form-phone">
+                        <p>Telefone:</p>
+                        <input type="text" name="phone">
+                    </div>
+
+                    <div class="entry-form-email">
+                        <p>Email:</p>
+                        <input type="text" name="email">
+                    </div>
+
+                    <div class="entry-form-board">
+                        <p>Placa:</p>
+                        <input type="text" name="board">
+                    </div>
+
+                    <div class="entry-form-plans">
+                        <p>Planos:</p>
+                        <select name="plans" id="plans">
+                            <option value="">Planos</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="entry-form-button">
+                    <button id="registerEntry">Registrar</button>
+                </div>
+            </div>
+            <p class="entry-register-title">Registro de Entradas</p>
+            <div class="entry-reister-table-container">
+                <table class="entry-reister-table">
+                    <tr class="entry-reister-table-title">
+                        <th>Cliente</th>
+                        <th>Placa</th>
+                        <th>Telefone</th>
+                        <th>Vaga</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                   
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                   
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                    <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                     <tr>
+                        <td>Cleiton Silva Santos</td>
+                        <td>ACB-1234</td>
+                        <td>(11) 99999-9999</td>
+                        <td>A203</td>
+                        <td>Cadastrar Saída </td>
+                    </tr>
+                   
+                   
+                </table>
+            </div>
+        </div>
+        `
+    } else if (shortcut.id == "shortcutExit") {
+        mainContainer.innerHTML =`
+        <div class="exit-container">
             <div class="exit-title">
                 <p>Cadastro de Saída</p>
             </div>
@@ -494,9 +670,11 @@
                     </tr>
                 </table>
             </div>
-        </div> -->
-
-        <!-- <div class="move-container">
+        </div>
+        `
+    } else if (shortcut.id == "shortcutMove") {
+        mainContainer.innerHTML =`
+        <div class="move-container">
             <div class="move-form">
                 <p>Veiculo:</p>
                 <select name="car" id="moveCar">
@@ -513,9 +691,11 @@
             <div class="move-form-button">
                 <button id="moveCar">Mover Veiculo</button>
             </div>
-        </div> -->
-
-        <!-- <div class="reports-container">
+        </div>
+        `
+    } else if (shortcut.id == "shortcutPlans") {
+        mainContainer.innerHTML =`
+        <div class="reports-container">
             <div class="reports-title">
                 <p>Relatórios</p>
             </div>
@@ -586,9 +766,11 @@
 
 
             </div>
-        </div> -->
-    
-        <!-- <div class="plans-container">
+        </div>
+        `
+    } else if (shortcut.id == "shortcutReports") {
+        mainContainer.innerHTML =`
+        <div class="plans-container">
             <div class="plans-register-title"><p>Cadastro de Planos</p></div>
             <div class="plans-form-container">
                     <div class="plans-form-camp">
@@ -672,12 +854,37 @@
              
                 
             </div>
-        </div> -->
-   
-    </div>
+        </div>
+        `
+    } else {
+        mainContainer.innerHTML =`
+        <p>deu ruim</p>
+        `
+    }
+
+    
+}
+
+const changeShortcutClass = (shortcut) => {
+
+    shortcutEntry.setAttribute("class", "shortcut-container");
+    shortcutExit.setAttribute("class", "shortcut-container");
+    shortcutMove.setAttribute("class", "shortcut-container");
+    shortcutPlans.setAttribute("class", "shortcut-container");
+    shortcutReports.setAttribute("class", "shortcut-container");
+
+    shortcut.setAttribute("class", "shortcut-container-selected");
+
+    changePage(shortcut)
+
+
+}
+shortcutEntry.addEventListener("click", () => changeShortcutClass(shortcutEntry))
+shortcutExit.addEventListener("click", () => changeShortcutClass(shortcutExit))
+shortcutMove.addEventListener("click", () => changeShortcutClass(shortcutMove))
+shortcutPlans.addEventListener("click", () => changeShortcutClass(shortcutPlans))
+shortcutReports.addEventListener("click", () => changeShortcutClass(shortcutReports))
 
 
 
-</body>
 
-</html>
