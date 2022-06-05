@@ -10,10 +10,10 @@ const shortcutReports = document.getElementById("shortcutReports");
 const mainContainer = document.getElementById("container");
 
 const changePage = (shortcut) => {
-  mainContainer.replaceChildren();
+    mainContainer.replaceChildren();
 
-  if (shortcut.id == "shortcutEntry") {
-    mainContainer.innerHTML = `  
+    if (shortcut.id == "shortcutEntry") {
+        mainContainer.innerHTML = `  
         <div class="entry-container">
             <p class="entry-title">Cadastro de Entrada</p>
             <div class="entry-form-container">
@@ -255,9 +255,9 @@ const changePage = (shortcut) => {
             </div>
         </div>
         `;
-    registerEntry();
-  } else if (shortcut.id == "shortcutExit") {
-    mainContainer.innerHTML = `
+        registerEntry();
+    } else if (shortcut.id == "shortcutExit") {
+        mainContainer.innerHTML = `
         <div class="exit-container">
             <div class="exit-title">
                 <p>Cadastro de Saída</p>
@@ -437,8 +437,8 @@ const changePage = (shortcut) => {
             </div>
         </div>
         `;
-  } else if (shortcut.id == "shortcutMove") {
-    mainContainer.innerHTML = `
+    } else if (shortcut.id == "shortcutMove") {
+        mainContainer.innerHTML = `
     <div class="move-container">
     <div class="move-title">
       <p>Mover Veiculo</p>
@@ -463,28 +463,28 @@ const changePage = (shortcut) => {
     </div>
   </div>
         `;
-    moveCar();
+        moveCar();
 
-  } else if (shortcut.id == "shortcutPlans") {
-    mainContainer.innerHTML = `
+    } else if (shortcut.id == "shortcutPlans") {
+        mainContainer.innerHTML = `
     <div class="plans-container">
     <div class="plans-register-title"><p>Cadastro de Planos</p></div>
     <div class="plans-form-container">
             <div class="plans-form-camp">
                 <p>Nome do Plano:</p>
-                <input type="text" name="plan">
+                <input type="text" id="planName">
             </div>
             <div class="plans-form-camp">
                 <p>Primeira Hora:</p>
-                <input type="text" name="plan">
+                <input type="number" id="planFirstHour">
             </div>
             <div class="plans-form-camp">
                 <p>Demais Horas:</p>
-                <input type="text" name="plan">
+                <input type="number" id="planOutherHours">
             </div>
             <div class="plans-form-camp">
                 <p>Diaria:</p>
-                <input type="text" name="plan">
+                <input type="number" id="planDaily">
             </div>
             <div class="plans-form-button">
                 <button id="plansRegisterButton">Cadastrar Plano</button>
@@ -493,15 +493,14 @@ const changePage = (shortcut) => {
     <div class="plans-title"><p>Planos</p></div>
     <div id="plansContainer" class="plans-card-container">
      
-     
-        
+  
     </div>
 </div>
         `;
 
         plansRegister()
-  } else if (shortcut.id == "shortcutReports") {
-    mainContainer.innerHTML = `
+    } else if (shortcut.id == "shortcutReports") {
+        mainContainer.innerHTML = `
   
 <div class="reports-container">
 <div class="reports-title">
@@ -577,32 +576,32 @@ const changePage = (shortcut) => {
 </div>
 
         `;
-  } else {
-    mainContainer.innerHTML = `
+    } else {
+        mainContainer.innerHTML = `
         <p>deu ruim</p>
         `;
-  }
+    }
 };
 
 const changeShortcutClass = (shortcut) => {
-  shortcutEntry.setAttribute("class", "shortcut-container");
-  shortcutExit.setAttribute("class", "shortcut-container");
-  shortcutMove.setAttribute("class", "shortcut-container");
-  shortcutPlans.setAttribute("class", "shortcut-container");
-  shortcutReports.setAttribute("class", "shortcut-container");
+    shortcutEntry.setAttribute("class", "shortcut-container");
+    shortcutExit.setAttribute("class", "shortcut-container");
+    shortcutMove.setAttribute("class", "shortcut-container");
+    shortcutPlans.setAttribute("class", "shortcut-container");
+    shortcutReports.setAttribute("class", "shortcut-container");
 
-  shortcut.setAttribute("class", "shortcut-container-selected");
+    shortcut.setAttribute("class", "shortcut-container-selected");
 
-  changePage(shortcut);
+    changePage(shortcut);
 };
 shortcutEntry.addEventListener("click", () =>
-  changeShortcutClass(shortcutEntry)
+    changeShortcutClass(shortcutEntry)
 );
 shortcutExit.addEventListener("click", () => changeShortcutClass(shortcutExit));
 shortcutMove.addEventListener("click", () => changeShortcutClass(shortcutMove));
 shortcutPlans.addEventListener("click", () =>
-  changeShortcutClass(shortcutPlans)
+    changeShortcutClass(shortcutPlans)
 );
 shortcutReports.addEventListener("click", () =>
-  changeShortcutClass(shortcutReports)
+    changeShortcutClass(shortcutReports)
 );
