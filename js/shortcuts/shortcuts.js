@@ -1,6 +1,7 @@
 import { registerEntry } from "../entryRegister.js";
 import { moveCar } from "../moveCar.js";
 import { plansRegister } from "../plans.js";
+import {reports} from "../reports.js";
 
 const shortcutEntry = document.getElementById("shortcutEntry");
 const shortcutExit = document.getElementById("shortcutExit");
@@ -47,6 +48,13 @@ const changePage = (shortcut) => {
                         <p>Planos:</p>
                         <select name="plans" id="plans">
                             <option value="">Planos</option>
+                        </select>
+                    </div>
+
+                    <div class="entry-form-plans">
+                        <p>Vaga:</p>
+                        <select name="vacancies" id="vacancies">
+                            <option value="">Vagas</option>
                         </select>
                     </div>
 
@@ -518,14 +526,14 @@ const changePage = (shortcut) => {
                 </div>
 
                 <p>Entrada de carros: </p>
-                <p>200</p>
+                <p id="enterWeek"></p>
         </div>
         <div class="report-card-info-container">
             <div class="report-card-info-image">
                 <img src="./assets/icons/planos.png" alt="">
             </div>
-            <p>Entrada de carros: </p>
-            <p>200</p>
+            <p>Lucro Total: </p>
+            <p id="profitWeek" ></p>
         </div>
     </div>
     <div class="report-card">
@@ -538,15 +546,15 @@ const changePage = (shortcut) => {
                     <img src="./assets/icons/entrada.png" alt="">
                 </div>
 
-                <p>Entrada de carros: </p>
-                <p>2000</p>
+                <p >Entrada de carros: </p>
+                <p id="enterMonth" >2000</p>
         </div>
         <div class="report-card-info-container">
             <div class="report-card-info-image">
                 <img src="./assets/icons/planos.png" alt="">
             </div>
-            <p>Entrada de carros: </p>
-            <p>2000</p>
+            <p>Lucro Total: </p>
+            <p id="profitMonth" ></p>
         </div>
     </div>
     <div class="report-card">
@@ -560,22 +568,21 @@ const changePage = (shortcut) => {
                 </div>
 
                 <p>Entrada de carros: </p>
-                <p>22300</p>
+                <p id="enterYear" ></p>
         </div>
         <div class="report-card-info-container">
             <div class="report-card-info-image">
                 <img src="./assets/icons/planos.png" alt="">
             </div>
-            <p>Entrada de carros: </p>
-            <p>200</p>
+            <p>Lucro Total: </p>
+            <p  id="profitYear" ></p>
         </div>
     </div>
 
 
 </div>
-</div>
-
-        `;
+</div>`;
+reports()
     } else {
         mainContainer.innerHTML = `
         <p>deu ruim</p>

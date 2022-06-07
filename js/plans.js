@@ -95,35 +95,8 @@ const plansRegister = () => {
       diaria: parseFloat(planDaily.value)
     }
 
-    // var dataUTC = new Date(Date.UTC(2020, 1, 20, 8, 0, 0));
-    // console.log(dataUTC);
-
-    const now = new Date
-
-    const mesEntrada = 4
-    const horaEntrada = 13
-    const diaEntrada = 28
-    
-    console.log("Hoje é " + now.getDate() + " de " + now.getMonth() + " de " + now.getFullYear())
-    console.log("a hora atual é " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds())
-
-    if (diaEntrada == now.getDate()){
-      const intervalo = now.getHours() - horaEntrada
-      console.log("intervalo : " + intervalo+ " horas")
-    }else {
-      const intervalo = now.getDate() - diaEntrada
-      console.log("intervalo : " + intervalo + " dias")
-    }
-
-
-
-    console.log(plansApi.nome)
-    console.log(plansApi.primeiraHora)
-    console.log(plansApi.horaAdicional)
-    console.log(plansApi.diaria)
-
     if (isNaN(plansApi.diaria) || isNaN(plansApi.primeiraHora) || isNaN(plansApi.horaAdicional)) {
-      console.log("Preencha todos os valoress")
+      alert("Preencha todos os valoress")
     } else {
       if (plansApi.nome != "") {
         plans.push(plansApi)
@@ -132,7 +105,7 @@ const plansRegister = () => {
 
         loadCardPlans()
       } else {
-        console.log("Preencha o nome")
+        alert("Preencha o nome")
       }
     }
 
