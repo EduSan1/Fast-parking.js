@@ -1,51 +1,24 @@
-
-
-
-
-
 const exitRegister = () => {
     const exitBoards = document.getElementById("exitBoards");
     const exitForm = document.getElementById("exitForm");
     const exitFormButton = document.getElementById("exitFormButton");
     const exitTable = document.getElementById("exitTable");
 
-    const vagas = [{
-        vaga: 23,
-        setor: "A",
-        idVaga: 5
-    }, {
-        vaga: 24,
-        setor: "A",
-        idVaga: 4
-    }, {
-        vaga: 25,
-        setor: "B",
-        idVaga: 3
-    }, {
-        vaga: 26,
-        setor: "A",
-        idVaga: 2
-    }, {
-        vaga: 27,
-        setor: "B",
-        idVaga: 1
-    }]
-
     const boards = [{
         placa: "ABC-1234",
-        idVeiculo: 2
+        idRegistro: 2
     }, {
         placa: "SDF-9467",
-        idVeiculo: 1
+        idRegistro: 1
     }, {
         placa: "FDG-1375",
-        idVeiculo: 3
+        idRegistro: 3
     }, {
         placa: "GFR-7688",
-        idVeiculo: 4
+        idRegistro: 4
     }, {
         placa: "DIL-3456",
-        idVeiculo: 5
+        idRegistro: 5
     }]
 
     const selectedClient = {
@@ -96,7 +69,7 @@ const exitRegister = () => {
         boards.map(board => {
             const option = document.createElement("option")
 
-            option.setAttribute("value", `${board.idVeiculo}`);
+            option.setAttribute("value", `${board.idRegistro}`);
             option.textContent = `${board.placa}`
 
             exitBoards.appendChild(option);

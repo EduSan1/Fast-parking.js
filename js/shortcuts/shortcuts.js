@@ -22,39 +22,39 @@ const changePage = (shortcut) => {
                 <div class="entry-form">
                     <div class="entry-form-name">
                         <p>Nome Cliente:</p>
-                        <input type="text" name="name">
+                        <input type="text" id="entryName" name="name">
                     </div>
 
                     <div class="entry-form-rg">
                         <p>R.G:</p>
-                        <input type="text" name="rg">
+                        <input type="number" id="entryRg" name="rg">
                     </div>
 
                     <div class="entry-form-phone">
                         <p>Telefone:</p>
-                        <input type="text" name="phone">
+                        <input type="number" id="entryPhone" name="phone">
                     </div>
 
                     <div class="entry-form-email">
                         <p>Email:</p>
-                        <input type="text" name="email">
+                        <input type="text" id="entryEmail" name="email">
                     </div>
 
                     <div class="entry-form-board">
                         <p>Placa:</p>
-                        <input type="text" name="board">
+                        <input type="text" id="entrYPlaca" name="board">
                     </div>
 
                     <div class="entry-form-plans">
                         <p>Planos:</p>
-                        <select name="plans" id="plans">
-                            <option value="">Planos</option>
-                        </select>
+                        <div name="plans" id="entryPlans">
+                           
+                        </div>
                     </div>
 
                     <div class="entry-form-plans">
                         <p>Vaga:</p>
-                        <select name="vacancies" id="vacancies">
+                        <select name="vacancies" id="entryVacancies">
                             <option value="">Vagas</option>
                         </select>
                     </div>
@@ -80,186 +80,7 @@ const changePage = (shortcut) => {
                         <td>(11) 99999-9999</td>
                         <td>A203</td>
                         <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                   
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                   
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                     <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>
-                   
-                   
+                    </tr>   
                 </table>
             </div>
         </div>

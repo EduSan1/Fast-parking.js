@@ -97,6 +97,19 @@
   padding-left: 5%;
 }
 
+#exitBoards {
+  background-color: #1b1b1b;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 70%;
+  color: #fff;
+  font-size: clamp(4px, 1vw, 14px);
+}
+
 #registerExit {
   width: 25%;
   height: 50%;

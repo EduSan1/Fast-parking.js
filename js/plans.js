@@ -1,29 +1,71 @@
 'use strict'
 
-const plans = [
-  {
-    nome: "Bronze",
-    primeiraHora: 15.0,
-    horaAdicional: 10.0,
-    diaria: 100.0,
-  },
 
-  {
-    nome: "Silver",
-    primeiraHora: 15.0,
-    horaAdicional: 20.0,
-    diaria: 200.0,
-  },
+const searchPlan = async(event) => {
+  const id = event.target.id
+  const plan = await searchPlanById(id)
+  showPlan(plan)
+}
+const searchPlanById = async (id) => {
 
-  {
-    nome: "Gold",
-    primeiraHora: 25.0,
-    horaAdicional: 20.0,
-    diaria: 300.0,
-  }
-];
+    const url = "http://localhost/estacionamento/projetoEstacionamento/api/planos/"+id;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data
 
+}
+const showPlan = (plan) => {
+  // const planName = document.getElementById("planName");
+  // const planFirstHour = document.getElementById("planFirstHour");
+  // const planOutherHours = document.getElementById("planOutherHours");
+  // const planDaily = document.getElementById("planDaily");
+  // const plansRegisterButton = document.getElementById("plansRegisterButton");
 
+  // const editPlan = async (plan,id) => {
+  //   const url = 'http://localhost/estacionamento/projetoEstacionamento/api/planos/' + id;
+  //   const options = {
+  //     "method": 'PUT',
+  //     'body': JSON.stringify(plan),
+  //     'headers': {
+  //       'content-type': 'application/json'
+  //     }
+
+  //   }
+
+  //   const response = await fetch(url, options)
+  // }
+
+  // const edit = async (event) => {
+  //   console.log(event)
+  //   // const plansApi = {
+  //   //   nome: planName.value,
+  //   //   primeiraHora: parseFloat(planFirstHour.value),
+  //   //   horaAdicional: parseFloat(planOutherHours.value),
+  //   //   diaria: parseFloat(planDaily.value)
+  //   // }
+
+  //   // if (isNaN(plansApi.diaria) || isNaN(plansApi.primeiraHora) || isNaN(plansApi.horaAdicional)) {
+  //   //   alert("Preencha todos os valoress")
+  //   // } else {
+  //   //   if (plansApi.nome != "") {
+  //   //     await editPlan(plansApi,id)
+
+  //   //     plansContainer.replaceChildren()
+
+  //   //     loadCardPlans(await getPlans())
+  //   //   } else {
+  //   //     alert("Preencha o nome")
+  //   //   }
+  //   // }
+
+  // };
+
+  // planName.value = plan.nome
+  // planFirstHour.value = plan.primeiraHora
+  // planOutherHours.value = plan.horaAdicional
+  // planDaily.value = plan.diaria
+  // plansRegisterButton.addEventListener("click", edit)
+}
 
 const createCardPlans = (plan) => {
   const plansCard = document.createElement("div")
@@ -47,6 +89,8 @@ const createCardPlans = (plan) => {
 
   plansCardHeader.setAttribute("class", "plans-card-header");
   plansCardImageContainer.setAttribute("class", "plans-card-image");
+  plansCardImage.setAttribute("id", `${plan.id}`);
+  plansCardImage.addEventListener('click', searchPlan)
   plansCardImage.setAttribute("src", "assets/icons/edit.png");
   plansCardImage.setAttribute("alt", "editPlan");
   plansCardInfo.setAttribute("class", "plans-card-info");
@@ -66,7 +110,7 @@ const createCardPlans = (plan) => {
   return plansCard
 }
 
-const loadCardPlans = () => {
+const loadCardPlans = (plans) => {
   plans.forEach(plan => {
 
     plansContainer.appendChild(createCardPlans(plan))
@@ -74,7 +118,7 @@ const loadCardPlans = () => {
   });
 }
 
-const plansRegister = () => {
+const plansRegister = async () => {
 
   const plansRegisterButton = document.getElementById("plansRegisterButton");
   const plansContainer = document.getElementById("plansContainer");
@@ -84,9 +128,40 @@ const plansRegister = () => {
   const planOutherHours = document.getElementById("planOutherHours");
   const planDaily = document.getElementById("planDaily");
 
-  loadCardPlans()
 
-  const register = () => {
+
+
+  const getPlans = async () => {
+    const url = "http://localhost/estacionamento/projetoEstacionamento/api/planos";
+    const response = await fetch(url);
+    const data = await response.json();
+    return data
+  };
+
+
+  const planos = await getPlans();
+  loadCardPlans(planos)
+
+  const editPlanContainer = document.getElementById("editPlan")
+
+
+  const registerPlan = async (plan) => {
+
+
+    const url = 'http://localhost/estacionamento/projetoEstacionamento/api/planos';
+    const options = {
+      "method": 'POST',
+      'body': JSON.stringify(plan),
+      'headers': {
+        'content-type': 'application/json'
+      }
+
+    }
+
+    const response = await fetch(url, options)
+  }
+
+  const register = async () => {
 
     const plansApi = {
       nome: planName.value,
@@ -99,11 +174,11 @@ const plansRegister = () => {
       alert("Preencha todos os valoress")
     } else {
       if (plansApi.nome != "") {
-        plans.push(plansApi)
+        await registerPlan(plansApi)
 
         plansContainer.replaceChildren()
 
-        loadCardPlans()
+        loadCardPlans(await getPlans())
       } else {
         alert("Preencha o nome")
       }
