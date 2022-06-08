@@ -2,6 +2,7 @@ import { registerEntry } from "../entryRegister.js";
 import { moveCar } from "../moveCar.js";
 import { plansRegister } from "../plans.js";
 import {reports} from "../reports.js";
+import { exitRegister } from "../exitRegister.js";
 
 const shortcutEntry = document.getElementById("shortcutEntry");
 const shortcutExit = document.getElementById("shortcutExit");
@@ -274,68 +275,23 @@ const changePage = (shortcut) => {
                 <div class="exit-form-board-container">
                     <div class="exit-form-board">
                         <p>Placa:</p>
-                        <select name="board" id="boards">
-                            <option value="">ACV-1234</option>
+                        <select name="board"  id="exitBoards">
+                            <option value="">Selecione uma Placa</option>
                         </select>
                     </div>
                 </div>
-                <div class="exit-form-register">
-                    <div class="exit-form-camp">
-                        <p>Nome Cliente:</p>
-                        <div class="exit-form-camp-result">
-                            <p>Jorge</p>
-                        </div>
-                    </div>
-                    <div class="exit-form-camp">
-                        <p>Plano:</p>
-                        <div class="exit-form-camp-result">
-                            <p>Gold</p>
-                        </div>
-                    </div>
-                    <div class="exit-form-camp">
-                        <p>Hora entrada:</p>
-                        <div class="exit-form-camp-result">
-                            <p>13:00</p>
-                        </div>
-                    </div>
-                    <div class="exit-form-camp">
-                        <p>Dia Entrada:</p>
-                        <div class="exit-form-camp-result">
-                            <p>29/03/2022</p>
-                        </div>
-                    </div>
-
-                    <div class="exit-form-camp">
-                        <p>Tempo Total:</p>
-                        <div class="exit-form-camp-result">
-                            <p>20h</p>
-                        </div>
-                    </div>
-
-                    <div class="exit-form-camp">
-                        <p>Vaga</p>
-                        <div class="exit-form-camp-result">
-                            <p>A102</p>
-                        </div>
-                    </div>
-
-                    <div class="exit-form-camp">
-                        <p>Valor Total:</p>
-                        <div class="exit-form-camp-result">
-                            <p>R$ 200,00</p>
-                        </div>
-                    </div>
-
+                <div id="exitForm" class="exit-form-register">
+                  
                 </div>
-                <div class="exit-form-register-button">
-                    <button id="registerExit">Confirmar Saída</button>
+                <div id="exitFormButton" class="exit-form-register-button">
+                    
                 </div>
             </div>
             <div class="exit-title-table">
                 <p>Registro de Saída</p>
             </div>
             <div class="exit-table-container">
-                <table class="exit-table">
+                <table id="exitTable" class="exit-table">
                     <tr class="exit-table-title">
                         <th>Cliente</th>
                         <th>Placa</th>
@@ -343,108 +299,13 @@ const changePage = (shortcut) => {
                         <th>Data Saída</th>
                         <th>Hora Saída</th>
                     </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>28/09/2022</td>
-                        <td>13:23</td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>13/03/2022</td>
-                        <td>14:20 </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>28/09/2022</td>
-                        <td>13:23</td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>13/03/2022</td>
-                        <td>14:20 </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>28/09/2022</td>
-                        <td>13:23</td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>13/03/2022</td>
-                        <td>14:20 </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>28/09/2022</td>
-                        <td>13:23</td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>13/03/2022</td>
-                        <td>14:20 </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>28/09/2022</td>
-                        <td>13:23</td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>13/03/2022</td>
-                        <td>14:20 </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>28/09/2022</td>
-                        <td>13:23</td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>13/03/2022</td>
-                        <td>14:20 </td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>28/09/2022</td>
-                        <td>13:23</td>
-                    </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>13/03/2022</td>
-                        <td>14:20 </td>
-                    </tr>
+                   
+                  
                 </table>
             </div>
         </div>
-        `;
+        `
+        exitRegister();
     } else if (shortcut.id == "shortcutMove") {
         mainContainer.innerHTML = `
     <div class="move-container">
