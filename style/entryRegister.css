@@ -47,7 +47,8 @@
 }
 
 .entry-form > div > input,
-.entry-form > div > select {
+.entry-form > div > select,
+#entryPlans {
   background-color: #1b1b1b;
   border-radius: 10px;
   border: 1px solid #fff;
@@ -56,7 +57,12 @@
   height: 40%;
   color: #fff;
   font-size: clamp(4px, 1vw, 14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
 .entry-form > div > p {
   color: #fff;
   font-size: clamp(8px, 1vw, 16px);

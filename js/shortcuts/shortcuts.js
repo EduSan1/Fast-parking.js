@@ -27,29 +27,22 @@ const changePage = (shortcut) => {
 
                     <div class="entry-form-rg">
                         <p>R.G:</p>
-                        <input type="number" id="entryRg" name="rg">
+                        <input type="text" id="entryRg" name="rg">
                     </div>
 
                     <div class="entry-form-phone">
                         <p>Telefone:</p>
-                        <input type="number" id="entryPhone" name="phone">
+                        <input type="text" id="entryPhone" name="phone">
                     </div>
 
                     <div class="entry-form-email">
                         <p>Email:</p>
-                        <input type="text" id="entryEmail" name="email">
+                        <input type="email" id="entryEmail" name="email">
                     </div>
 
                     <div class="entry-form-board">
                         <p>Placa:</p>
-                        <input type="text" id="entrYPlaca" name="board">
-                    </div>
-
-                    <div class="entry-form-plans">
-                        <p>Planos:</p>
-                        <div name="plans" id="entryPlans">
-                           
-                        </div>
+                        <input type="text" id="entryBoard" name="board">
                     </div>
 
                     <div class="entry-form-plans">
@@ -57,6 +50,11 @@ const changePage = (shortcut) => {
                         <select name="vacancies" id="entryVacancies">
                             <option value="">Vagas</option>
                         </select>
+                    </div>
+
+                    <div class="entry-form-plans">
+                        <p>Planos:</p>
+                        <div name="plans" id="entryPlans"></div>
                     </div>
 
                 </div>
@@ -74,13 +72,7 @@ const changePage = (shortcut) => {
                         <th>Vaga</th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>Cleiton Silva Santos</td>
-                        <td>ACB-1234</td>
-                        <td>(11) 99999-9999</td>
-                        <td>A203</td>
-                        <td>Cadastrar Saída </td>
-                    </tr>   
+                    
                 </table>
             </div>
         </div>

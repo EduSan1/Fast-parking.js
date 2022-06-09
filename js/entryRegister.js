@@ -1,5 +1,5 @@
 
-const entry = [{
+const entrys = [{
     nomeCliente: "",
     placa: "",
     telefoneCliente: "",
@@ -48,31 +48,31 @@ const entryRegister = {
 const vacancies = [{
     vaga: 23,
     setor: "A",
-    idVaga: 5,
+    idVaga: 0,
     Plano: "Gold",
     idPlano: 2
 }, {
     vaga: 24,
     setor: "A",
-    idVaga: 4,
+    idVaga: 1,
     Plano: "Bronze",
     idPlano: 4
 }, {
     vaga: 25,
     setor: "B",
-    idVaga: 3,
+    idVaga: 2,
     Plano: "Silver",
     idPlano: 1
 }, {
     vaga: 26,
     setor: "A",
-    idVaga: 2,
+    idVaga: 3,
     Plano: "Platinum",
     idPlano: 3
 }, {
     vaga: 27,
     setor: "B",
-    idVaga: 1,
+    idVaga: 4,
     Plano: "Gold",
     idPlano: 2
 }]
@@ -112,11 +112,28 @@ const registerEntry = () => {
     const registerPlan = document.getElementById("entryPlans")
     const registerVacancies = document.getElementById("entryVacancies")
 
+    const createEntryTable = (entry) => {
+        // <tr>
+        //                 <td>Cleiton Silva Santos</td>
+        //                 <td>ACB-1234</td>
+        //                 <td>(11) 99999-9999</td>
+        //                 <td>A203</td>
+        //                 <td>Cadastrar Saída </td>
+        //             </tr>   
+
+        const tr = document.createElement("tr")
+        const nameClient = document.createElement("td")
+        const boardCar = document.createElement("td")
+        const phoneClient = document.createElement("td")
+        const vacancie = document.createElement("td")
+        const registerExit = document.createElement("td")
+    }
+
     const createVacanciesOption = (vacancie) => {
 
         const option = document.createElement("option")
 
-        option.setAttribute("value", `${vacancie.idPlano}`);
+        option.setAttribute("value", `${vacancie.idVaga}`);
         option.textContent = `${vacancie.setor + vacancie.vaga}`
 
         registerVacancies.appendChild(option);
@@ -124,19 +141,15 @@ const registerEntry = () => {
     }
 
     const setPlan = (event) => {
-        console.log(event.target)
-        console.log("plano: " + vacancies[event.target.value].Plano)
-        registerPlan.textContent = vacancies[event.target.value].Plano 
-     
-
+        registerPlan.textContent = vacancies[event.target.value].Plano
     }
 
-  
 
-    vacancies.map(vacancie => {createVacanciesOption(vacancie)})
-    registerVacancies.addEventListener("change",setPlan)
 
-    const registerClient = () => {
+    vacancies.map(vacancie => { createVacanciesOption(vacancie) })
+    registerVacancies.addEventListener("change", setPlan)
+
+    const registerClient = async () => {
         const client = {
             nome: `${clientName.value}`,
             documento: `${clientRg.value}`,
@@ -144,41 +157,77 @@ const registerEntry = () => {
             telefone: `${clientPhone.value}`
         }
 
-        console.log(client)
+        const url = 'http://localhost/estacionamento/projetoEstacionamento/api/clientes';
+        const options = {
+            "method": 'POST',
+            'body': JSON.stringify(client),
+            'headers': {
+                'content-type': 'application/json'
+            }
 
-        return 2
-    }
-
-    const registerCar = (idClient) => {
-        const car = {
-            placa: `${carBoard.value}`,
-            idClient: idClient
         }
 
-        console.log(car)
+        const response = await fetch(url, options)
+        const data = await response.json()
 
-        return 1
+        const idClient = data.idCliente
+        registerCar(idClient)
     }
 
-    const registerEntry = (idCar) => {
-        const rntry = {
+    const registerCar = async (idClient) => {
+        console.log(idClient)
+        const car = {
+            placa: `${carBoard.value}`,
+            idCliente: idClient
+        }
+
+        console.log(JSON.stringify(car))
+
+        const url = 'http://localhost/estacionamento/projetoEstacionamento/api/veiculos';
+        const options = {
+            "method": 'GET',
+            'headers': {
+                'content-type': 'application/json'
+            }
+
+        }
+
+        const response = await fetch(url, options)
+        const data = await response.json()
+
+        console.log(data)
+
+        // const idCar = data.idVeiculo
+        // registerEntry(idCar)
+    }
+
+    const registerEntry = async (idCar) => {
+        const entry = {
             idVagas: `${registerVacancies.value}`,
             idVeiculo: idCar
         }
 
-        console.log(rntry)
+        const url = 'http://localhost/estacionamento/projetoEstacionamento/api/registros';
+        const options = {
+            "method": 'POST',
+            'body': JSON.stringify(entry),
+            'headers': {
+                'content-type': 'application/json'
+            }
 
- 
+        }
+
+        const response = await fetch(url, options)
+        const data = await response.json()
+
+        console.log(data)
+
+
     }
 
-    const register = () => {
-        const idClient = registerClient()
-        const idCar = registerCar(idClient)
-        registerEntry(idCar)
 
-    }
 
-    entryButton.addEventListener("click", register)
+    entryButton.addEventListener("click", registerClient)
 }
 
 export { registerEntry };
