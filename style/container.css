@@ -2,4 +2,5 @@
     width: 85%;
     height: 100%;
     background-color: #111747;
+    background-color: var(--dark-blue);
 }

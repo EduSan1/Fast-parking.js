@@ -8,5 +8,15 @@
 body {
     width: 100vw;
     height: 100vh;
-    display: flex;
+    display: flex;  
+}
+
+:root {
+    --gray : #1b1b1b;
+    --dark-blue : #111747;
+    --dark : #090d25;
+    --blue : #283A92;
+    --white : #e1e1e1;
+    --yellow : #d9c517;
+    --light-blue : #0049a1;
 }

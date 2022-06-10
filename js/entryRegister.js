@@ -28,81 +28,8 @@ const entrys = [{
     idRegistro: 0
 }]
 
-const ClientRegister = {
-    nome: "vinicio",
-    documento: "00.000.000.00",
-    email: "vinicio@vinicio.com",
-    telefone: "(11) 99999-9999"
-}
 
-const CarRegister = {
-    placa: "DCE-1597",
-    idCliente: 1
-}
-
-const entryRegister = {
-    idVeiculo: 1,
-    idVagas: 1
-}
-
-const vacancies = [{
-    vaga: 23,
-    setor: "A",
-    idVaga: 0,
-    Plano: "Gold",
-    idPlano: 2
-}, {
-    vaga: 24,
-    setor: "A",
-    idVaga: 1,
-    Plano: "Bronze",
-    idPlano: 4
-}, {
-    vaga: 25,
-    setor: "B",
-    idVaga: 2,
-    Plano: "Silver",
-    idPlano: 1
-}, {
-    vaga: 26,
-    setor: "A",
-    idVaga: 3,
-    Plano: "Platinum",
-    idPlano: 3
-}, {
-    vaga: 27,
-    setor: "B",
-    idVaga: 4,
-    Plano: "Gold",
-    idPlano: 2
-}]
-
-const plans = [
-    {
-        nome: "Bronze",
-        primeiraHora: 15.0,
-        horaAdicional: 10.0,
-        diaria: 100.0,
-    },
-
-    {
-        nome: "Silver",
-        primeiraHora: 15.0,
-        horaAdicional: 20.0,
-        diaria: 200.0,
-    },
-
-    {
-        nome: "Gold",
-        primeiraHora: 25.0,
-        horaAdicional: 20.0,
-        diaria: 300.0,
-    }
-];
-
-
-
-const registerEntry = () => {
+const registerEntry = async () => {
     const entryButton = document.getElementById("registerEntry")
     const clientName = document.getElementById("entryName")
     const clientRg = document.getElementById("entryRg")
@@ -111,15 +38,10 @@ const registerEntry = () => {
     const carBoard = document.getElementById("entryBoard")
     const registerPlan = document.getElementById("entryPlans")
     const registerVacancies = document.getElementById("entryVacancies")
+    const entryTable = document.getElementById("entryTable")
 
     const createEntryTable = (entry) => {
-        // <tr>
-        //                 <td>Cleiton Silva Santos</td>
-        //                 <td>ACB-1234</td>
-        //                 <td>(11) 99999-9999</td>
-        //                 <td>A203</td>
-        //                 <td>Cadastrar Saída </td>
-        //             </tr>   
+
 
         const tr = document.createElement("tr")
         const nameClient = document.createElement("td")
@@ -127,23 +49,63 @@ const registerEntry = () => {
         const phoneClient = document.createElement("td")
         const vacancie = document.createElement("td")
         const registerExit = document.createElement("td")
+
+        nameClient.textContent = entry.nomeCliente
+        boardCar.textContent = entry.placa
+        phoneClient.textContent = entry.telefoneCliente
+        vacancie.textContent = entry.vaga
+        registerExit.textContent = entry.idRegistro
+
+        tr.appendChild(nameClient)
+        tr.appendChild(boardCar)
+        tr.appendChild(phoneClient)
+        tr.appendChild(vacancie)
+        tr.appendChild(registerExit)
+
+        entryTable.appendChild(tr)
+
+
     }
+
+    entrys.map(entry => { createEntryTable(entry) })
 
     const createVacanciesOption = (vacancie) => {
 
         const option = document.createElement("option")
 
         option.setAttribute("value", `${vacancie.idVaga}`);
+        // option.setAttribute("id", `${vacancie.idPlano}`)
         option.textContent = `${vacancie.setor + vacancie.vaga}`
 
         registerVacancies.appendChild(option);
 
     }
 
-    const setPlan = (event) => {
-        registerPlan.textContent = vacancies[event.target.value].Plano
+    const setPlan = async (event) => {
+
+        console.log(event.target.value)
+
+        let url = "http://localhost/estacionamento/projetoEstacionamento/api/vagas/" + event.target.value;
+        let response = await fetch(url);
+        let data = await response.json();
+        console.log(data)
+        const idPLan = data.idPlano
+
+        url = "http://localhost/estacionamento/projetoEstacionamento/api/planos/" + idPLan;
+        response = await fetch(url);
+        data = await response.json();
+        console.log(data)
+        registerPlan.textContent = data.nome
     }
 
+    const getFreeVacancies = async () => {
+        const url = "http://localhost/estacionamento/projetoEstacionamento/api/vagas/listar/livres";
+        const response = await fetch(url);
+        const data = await response.json();
+        return data
+    }
+
+    const vacancies = await getFreeVacancies()
 
 
     vacancies.map(vacancie => { createVacanciesOption(vacancie) })
@@ -170,12 +132,11 @@ const registerEntry = () => {
         const response = await fetch(url, options)
         const data = await response.json()
 
-        const idClient = data.idCliente
-        registerCar(idClient)
+        return data.idCliente
     }
 
     const registerCar = async (idClient) => {
-        console.log(idClient)
+
         const car = {
             placa: `${carBoard.value}`,
             idCliente: idClient
@@ -185,7 +146,8 @@ const registerEntry = () => {
 
         const url = 'http://localhost/estacionamento/projetoEstacionamento/api/veiculos';
         const options = {
-            "method": 'GET',
+            "method": 'POST',
+            'body': JSON.stringify(car),
             'headers': {
                 'content-type': 'application/json'
             }
@@ -197,8 +159,8 @@ const registerEntry = () => {
 
         console.log(data)
 
-        // const idCar = data.idVeiculo
-        // registerEntry(idCar)
+        return data.idVeiculo
+
     }
 
     const registerEntry = async (idCar) => {
@@ -222,12 +184,42 @@ const registerEntry = () => {
 
         console.log(data)
 
+    }
 
+    const register = async () => {
+        const idClient = await registerClient()
+        const idCar = await registerCar(idClient)
+        console.log(idCar)
+        registerEntry(idCar)
+    }
+
+    const phoneMask = (event) => {
+        let phone = event.target.value
+        phone = phone.replace(/[^0-9]/g, '')
+        phone = phone.replace(/(.{2})(.{5})(.{4})/, '($1) $2-$3')
+        phone = phone.replace(/(.{15})(.*)/, '$1')
+        clientPhone.value = phone
+    }
+
+    const rgMask = (event) => {
+        let rg = event.target.value
+        rg = rg.replace(/([0-9]{2})([0-9]{3})([0-9]{3})([0-9]{2})/, '$1.$2.$3-$4')
+        rg = rg.replace(/(.{13})(.*)/, '$1')
+        clientRg.value = rg
+    }
+
+    const boardMask = (event) => {
+        let board = event.target.value
+        board = board.replace(/([a-zA-Z]{3})([0-9]{4})/, '$1-$2')
+        board = board.replace(/(.{8})(.*)/, '$1')
+        carBoard.value = board.toUpperCase()
     }
 
 
-
-    entryButton.addEventListener("click", registerClient)
+    entryButton.addEventListener("click", register)
+    clientPhone.addEventListener("input", phoneMask)
+    clientRg.addEventListener("input", rgMask)
+    carBoard.addEventListener("input", boardMask)
 }
 
 export { registerEntry };

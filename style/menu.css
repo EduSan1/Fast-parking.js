@@ -9,7 +9,7 @@
   padding-top: 1%;
   gap: 1%;
 
-  background-color: #1b1b1b;
+  background-color: var(--gray);
 }
 .menu-image {
   width: 80%;
@@ -61,8 +61,8 @@
     gap: 10%;
     padding: 0px 2%;
     border-radius: 10px;
-    border: 1px solid white;
-    background-color:#090d25;
+    border: 1px solid var(--white);
+    background-color:var(--dark);
     transition: .3s;
 }
 
@@ -73,7 +73,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: #283A92;
+    background-color: var(--blue);
 }
 
 .shortcut-container-selected> div:nth-child(1) > img,
@@ -82,11 +82,7 @@
 }
 
 
-
-.shortcut-text {
-}
-
 .shortcut-text > p {
-    color: #fff;
+    color: var(--white);
     font-size: clamp(8px, 1vw, 24px);
 }

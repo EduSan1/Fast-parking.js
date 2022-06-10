@@ -7,7 +7,7 @@
   align-items: flex-start;
   padding: 5%;
   gap: 5%;
-  color: #fff;
+  color: var(--white);
 }
 .entry-title,
 .entry-register-title {
@@ -49,13 +49,13 @@
 .entry-form > div > input,
 .entry-form > div > select,
 #entryPlans {
-  background-color: #1b1b1b;
+  background-color: var(--gray);
   border-radius: 10px;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   width: 100%;
   padding: 0% 5%;
   height: 40%;
-  color: #fff;
+  color: var(--white);
   font-size: clamp(4px, 1vw, 14px);
   display: flex;
   align-items: center;
@@ -64,7 +64,7 @@
 
 
 .entry-form > div > p {
-  color: #fff;
+  color: var(--white);
   font-size: clamp(8px, 1vw, 16px);
 }
 
@@ -75,23 +75,18 @@
 .entry-form-button > button {
   width: 100%;
   height: 100%;
-  background-color: #1b1b1b;
+  background-color: var(--gray);
   border-radius: 10px;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid var(--white);
+  color: var(--white);
   font-size: clamp(6px, 1vw, 16px);
   transition: 0.6s;
 }
 
 .entry-form-button > button:hover {
   cursor: pointer;
-  width: 100%;
-  height: 100%;
 
-  background-color: #d9c517;
-  border-radius: 10px;
-  border: 1px solid #fff;
-  color: #fff;
+  background-color: var(--yellow);
 }
 
 .entry-reister-table-container {
@@ -111,11 +106,11 @@
 }
 
 .entry-reister-table tr:nth-child(odd) {
-  background-color: #0049a1;
+  background-color: var(--light-blue);
 }
 
 .entry-reister-table tr:nth-child(even) {
-  background-color: #1b1b1b;
+  background-color: var(--gray);
 }
 .entry-reister-table tr:nth-child(1) {
   background-color: transparent;
@@ -128,7 +123,7 @@
 }
 
 .entry-reister-table tr td {
-  border: 1px solid white;
+  border: 1px solid var(--white);
   border-radius: 10px;
   padding-left: 10px;
   font-size: clamp(4px, 1vw, 12px);
@@ -137,7 +132,7 @@
 
 .entry-reister-table tr td:nth-child(5):hover {
   cursor: pointer;
-  background-color: #d9c517;
+  background-color: var(--yellow);
 }
 
 .entry-reister-table-container::-webkit-scrollbar {

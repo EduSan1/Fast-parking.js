@@ -7,7 +7,7 @@
   align-items: flex-start;
   padding: 5%;
   gap: 5%;
-  color: #fff;
+  color: var(--white);
 }
 
 .exit-title,
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: left ;
-  font-size: clamp(4px, 1.5vw, 24px);
+  font-size: clamp(4px, 1vw, 24px);
 }
 
 .exit-form {
@@ -45,14 +45,14 @@
 }
 
 #boards {
-  background-color: #1b1b1b;
+  background-color: var(--gray);
   border-radius: 10px;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   width: 10%;
   text-align: left;
   padding: 0% 0.4%;
   height: 45%;
-  color: #fff;
+  color: var(--white);
   font-size: clamp(4px, 1vw, 14px);
 }
 .exit-form-register {
@@ -74,17 +74,23 @@
   width: 20%;
 }
 
+.exit-form-camp > p {
+  font-size: clamp(6px, 1vw, 16px);
+  text-align: left;
+  font-weight: 400;
+}
+
 .exit-form-camp-result {
-  background-color: #1b1b1b;
+  background-color: var(--gray);
   border-radius: 10px;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 0% 5%;
   height: 70%;
-  color: #fff;
+  color: var(--white);
   font-size: clamp(4px, 1vw, 14px);
 }
 
@@ -98,32 +104,32 @@
 }
 
 #exitBoards {
-  background-color: #1b1b1b;
+  background-color: var(--gray);
   border-radius: 10px;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 20%;
   height: 70%;
-  color: #fff;
+  color: var(--white);
   font-size: clamp(4px, 1vw, 14px);
 }
 
 #registerExit {
   width: 25%;
   height: 50%;
-  background-color: #1b1b1b;
+  background-color: var(--gray);
   border-radius: 10px;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid var(--white);
+  color: var(--white);
   font-size: clamp(6px, 1vw, 16px);
   transition: 0.6s;
 }
 
 #registerExit:hover {
   cursor: pointer;
-  background-color: #d9c517;
+  background-color: var(--yellow);
 }
 
 .exit-table-container {
@@ -138,7 +144,7 @@
   background: transparent;
 }
 .exit-table-container::-webkit-scrollbar-thumb {
-  background-color: #283a92;
+  background-color: var(--blue);
   border-radius: 15px;
 }
 
@@ -153,11 +159,11 @@
 }
 
 .exit-table tr:nth-child(odd) {
-  background-color: #0049a1;
+  background-color: var(--light-blue);
 }
 
 .exit-table tr:nth-child(even) {
-  background-color: #1b1b1b;
+  background-color: var(--gray);
 }
 .exit-table tr:nth-child(1) {
   background-color: transparent;
@@ -169,12 +175,9 @@
 }
 
 .exit-table tr td {
-  border: 1px solid white;
+  border: 1px solid var(--white);
   border-radius: 10px;
   padding-left: 10px;
   font-size: clamp(4px, 1vw, 12px);
   transition: 0.6s;
-}
-
-.exit-table-title {
 }

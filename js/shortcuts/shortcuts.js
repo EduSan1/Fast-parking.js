@@ -46,7 +46,7 @@ const changePage = (shortcut) => {
                     </div>
 
                     <div class="entry-form-plans">
-                        <p>Vaga:</p>
+                        <p>Vaga livres:</p>
                         <select name="vacancies" id="entryVacancies">
                             <option value="">Vagas</option>
                         </select>
@@ -64,7 +64,7 @@ const changePage = (shortcut) => {
             </div>
             <p class="entry-register-title">Registro de Entradas</p>
             <div class="entry-reister-table-container">
-                <table class="entry-reister-table">
+                <table id="entryTable" class="entry-reister-table">
                     <tr class="entry-reister-table-title">
                         <th>Cliente</th>
                         <th>Placa</th>
