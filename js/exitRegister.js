@@ -6,6 +6,8 @@ const exitRegister = async () => {
 
 
     let selectedClient = null
+    let selectedRegister = null
+    let selectedBoard = null
 
     const getCars = async () => {
 
@@ -23,6 +25,7 @@ const exitRegister = async () => {
     }
 
     const getExitRegisters = async () => {
+        console.log("get")
         const url = "http://localhost/estacionamento/projetoEstacionamento/api/registros/saida";
         const response = await fetch(url);
         const data = await response.json();
@@ -34,29 +37,66 @@ const exitRegister = async () => {
         boards.map(board => {
             const option = document.createElement("option")
 
-            option.setAttribute("value", `${board.placa}`);
+            option.setAttribute("value", `${board.placa},${board.idRegistro}`);
             option.textContent = `${board.placa}`
 
             exitBoards.appendChild(option);
         })
     }
 
-    const registerExit = () => {
+    const registerExit = async () => {
         console.log(selectedClient)
+        console.log(selectedRegister)
 
         const updateRegister = {
             horaEntrada: selectedClient.horaentrada,
             diaEntrada: selectedClient.diaentrada,
             precoFinal: selectedClient.valorTotal,
-            idVagas: 23,
+            idVagas: selectedClient.idVaga,
             idVeiculo: selectedClient.idVeiculo
         }
+
+
+
+        const url = 'http://localhost/estacionamento/projetoEstacionamento/api/registros/' + selectedRegister;
+        const options = {
+            "method": 'PUT',
+            'body': JSON.stringify(updateRegister),
+            'headers': {
+                'content-type': 'application/json'
+            }
+
+        }
+
+        const response = await fetch(url, options)
+        const data = await response.json()
+        alert(data.message)
+
+        exitBoards.replaceChildren()
+        exitBoards.value = ""
+
+
+        exitForm.replaceChildren()
+        exitFormButton.replaceChildren()
+
+        exitTable.replaceChildren()
+        exitTable.innerHTML = `
+        <tr class="exit-table-title">
+            <th>Cliente</th>
+            <th>Placa</th>
+            <th>Telefone</th>
+            <th>Data Saída</th>
+            <th>Hora Saída</th>
+        </tr>
+        `
+        createExitTable()
+        createOptions()
 
     }
 
     const createForm = async (event) => {
 
-        const selectedBoard = event.target.value
+        [selectedBoard, selectedRegister] = event.target.value.split(',')
 
         selectedClient = await getRegisterByBoard(selectedBoard)
 
@@ -128,7 +168,7 @@ const exitRegister = async () => {
         const exitDate = document.createElement("td")
         const exitTime = document.createElement("td")
 
-        name.textContent = registry.nomeCliente
+        name.textContent = registry.nome
         board.textContent = registry.placa
         phone.textContent = registry.telefone
         exitDate.textContent = registry.dataSaida

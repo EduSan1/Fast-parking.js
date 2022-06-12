@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: left ;
-  font-size: clamp(4px, 1vw, 24px);
+  font-size: clamp(4px, 1vw, 16px);
 }
 
 .exit-form {
@@ -53,7 +53,7 @@
   padding: 0% 0.4%;
   height: 45%;
   color: var(--white);
-  font-size: clamp(4px, 1vw, 14px);
+  font-size: clamp(4px, 1vw, 10px);
 }
 .exit-form-register {
   width: 100%;
@@ -75,7 +75,7 @@
 }
 
 .exit-form-camp > p {
-  font-size: clamp(6px, 1vw, 16px);
+  font-size: clamp(4px, 1vw, 10px);
   text-align: left;
   font-weight: 400;
 }
@@ -91,7 +91,7 @@
   padding: 0% 5%;
   height: 70%;
   color: var(--white);
-  font-size: clamp(4px, 1vw, 14px);
+  font-size: clamp(4px, 1vw, 12px);
 }
 
 .exit-form-register-button {
@@ -113,7 +113,7 @@
   width: 20%;
   height: 70%;
   color: var(--white);
-  font-size: clamp(4px, 1vw, 14px);
+  font-size: clamp(4px, 1vw, 10px);
 }
 
 #registerExit {
@@ -123,7 +123,7 @@
   border-radius: 10px;
   border: 1px solid var(--white);
   color: var(--white);
-  font-size: clamp(6px, 1vw, 16px);
+  font-size: clamp(6px, 1vw, 12px);
   transition: 0.6s;
 }
 

@@ -48,7 +48,7 @@ const changePage = (shortcut) => {
                     <div class="entry-form-plans">
                         <p>Vaga livres:</p>
                         <select name="vacancies" id="entryVacancies">
-                            <option value="">Vagas</option>
+                            <option value=0>Vagas</option>
                         </select>
                     </div>
 

@@ -123,29 +123,43 @@ const registerEntry = async () => {
         console.log(data)
         registerPlan.textContent = data.nome
     }
+    const checkFields = () => {
+        if (clientName.value == "" || clientEmail.value == "" || registerVacancies.valuegit == 0 || carBoard.value.length != 8 || clientRg.value.length != 13 || clientPhone.value.length != 15  ) 
+            return false
+        else 
+            return true
+    }
 
     const registerClient = async () => {
-        const client = {
-            nome: `${clientName.value}`,
-            documento: `${clientRg.value}`,
-            email: `${clientEmail.value}`,
-            telefone: `${clientPhone.value}`
-        }
+        
+        if(checkFields() == true) {
 
-        const url = 'http://localhost/estacionamento/projetoEstacionamento/api/clientes';
-        const options = {
-            "method": 'POST',
-            'body': JSON.stringify(client),
-            'headers': {
-                'content-type': 'application/json'
+            const client = {
+                nome: `${clientName.value}`,
+                documento: `${clientRg.value}`,
+                email: `${clientEmail.value}`,
+                telefone: `${clientPhone.value}`
             }
+    
+            const url = 'http://localhost/estacionamento/projetoEstacionamento/api/clientes';
+            const options = {
+                "method": 'POST',
+                'body': JSON.stringify(client),
+                'headers': {
+                    'content-type': 'application/json'
+                }
+    
+            }
+    
+            const response = await fetch(url, options)
+            const data = await response.json()
+    
+            return data.idCliente
 
+        }else {
+            return false
         }
-
-        const response = await fetch(url, options)
-        const data = await response.json()
-
-        return data.idCliente
+        
     }
 
     const registerCar = async (idClient) => {
@@ -194,6 +208,7 @@ const registerEntry = async () => {
 
         const response = await fetch(url, options)
         const data = await response.json()
+        alert(data.message)
 
         entryTable.innerHTML = `  
         <tr class="entry-reister-table-title">
@@ -219,8 +234,13 @@ const registerEntry = async () => {
 
     const register = async () => {
         const idClient = await registerClient()
-        const idCar = await registerCar(idClient)
+        if (idClient == false) {
+            alert("preencha corretamente todos os campos para registrar a entrada")
+        }else {
+               const idCar = await registerCar(idClient)
         registerEntry(idCar)
+        }
+     
     }
 
     const phoneMask = (event) => {
