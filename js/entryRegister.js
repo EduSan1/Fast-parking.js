@@ -1,35 +1,36 @@
 
-const entrys = [{
-    nomeCliente: "",
-    placa: "",
-    telefoneCliente: "",
-    vaga: "",
-    idRegistro: 0
-},
-{
-    nomeCliente: "",
-    placa: "",
-    telefoneCliente: "",
-    vaga: "",
-    idRegistro: 0
-},
-{
-    nomeCliente: "",
-    placa: "",
-    telefoneCliente: "",
-    vaga: "",
-    idRegistro: 0
-},
-{
-    nomeCliente: "",
-    placa: "",
-    telefoneCliente: "",
-    vaga: "",
-    idRegistro: 0
-}]
+// = [{
+//     nomeCliente: "",
+//     placa: "",
+//     telefoneCliente: "",
+//     vaga: "",
+//     idRegistro: 0
+// },
+// {
+//     nomeCliente: "",
+//     placa: "",
+//     telefoneCliente: "",
+//     vaga: "",
+//     idRegistro: 0
+// },
+// {
+//     nomeCliente: "",
+//     placa: "",
+//     telefoneCliente: "",
+//     vaga: "",
+//     idRegistro: 0
+// },
+// {
+//     nomeCliente: "",
+//     placa: "",
+//     telefoneCliente: "",
+//     vaga: "",
+//     idRegistro: 0
+// }]
 
 
 const registerEntry = async () => {
+
     const entryButton = document.getElementById("registerEntry")
     const clientName = document.getElementById("entryName")
     const clientRg = document.getElementById("entryRg")
@@ -42,7 +43,6 @@ const registerEntry = async () => {
 
     const createEntryTable = (entry) => {
 
-
         const tr = document.createElement("tr")
         const nameClient = document.createElement("td")
         const boardCar = document.createElement("td")
@@ -52,9 +52,9 @@ const registerEntry = async () => {
 
         nameClient.textContent = entry.nomeCliente
         boardCar.textContent = entry.placa
-        phoneClient.textContent = entry.telefoneCliente
-        vacancie.textContent = entry.vaga
-        registerExit.textContent = entry.idRegistro
+        phoneClient.textContent = entry.telefone
+        vacancie.textContent = entry.numeroVaga
+        registerExit.textContent = "registrar saída"
 
         tr.appendChild(nameClient)
         tr.appendChild(boardCar)
@@ -62,12 +62,10 @@ const registerEntry = async () => {
         tr.appendChild(vacancie)
         tr.appendChild(registerExit)
 
-        entryTable.appendChild(tr)
+        return tr
 
 
     }
-
-    entrys.map(entry => { createEntryTable(entry) })
 
     const createVacanciesOption = (vacancie) => {
 
@@ -79,6 +77,34 @@ const registerEntry = async () => {
 
         registerVacancies.appendChild(option);
 
+    }
+
+    const getEntrys = async () => {
+        const url = "http://localhost/estacionamento/projetoEstacionamento/api/registros/entrada";
+        const response = await fetch(url);
+        const data = await response.json();
+        return data
+    }
+
+    const loadTableEntrys = async () => {
+
+        const entrys = await getEntrys()
+
+        entrys.map(entry => { entryTable.appendChild(createEntryTable(entry)) })
+    }
+
+    const loadOptionsVacancies = async () => {
+
+        const vacancies = await getFreeVacancies()
+
+        vacancies.map(vacancie => { createVacanciesOption(vacancie) })
+    }
+
+    const getFreeVacancies = async () => {
+        const url = "http://localhost/estacionamento/projetoEstacionamento/api/vagas/listar/livres";
+        const response = await fetch(url);
+        const data = await response.json();
+        return data
     }
 
     const setPlan = async (event) => {
@@ -97,19 +123,6 @@ const registerEntry = async () => {
         console.log(data)
         registerPlan.textContent = data.nome
     }
-
-    const getFreeVacancies = async () => {
-        const url = "http://localhost/estacionamento/projetoEstacionamento/api/vagas/listar/livres";
-        const response = await fetch(url);
-        const data = await response.json();
-        return data
-    }
-
-    const vacancies = await getFreeVacancies()
-
-
-    vacancies.map(vacancie => { createVacanciesOption(vacancie) })
-    registerVacancies.addEventListener("change", setPlan)
 
     const registerClient = async () => {
         const client = {
@@ -182,14 +195,31 @@ const registerEntry = async () => {
         const response = await fetch(url, options)
         const data = await response.json()
 
-        console.log(data)
+        entryTable.innerHTML = `  
+        <tr class="entry-reister-table-title">
+        <th>Cliente</th>
+        <th>Placa</th>
+        <th>Telefone</th>
+        <th>Vaga</th>
+        <th></th>
+        </tr>
+    `
+        loadTableEntrys()
+        registerVacancies.replaceChildren()
+        loadOptionsVacancies()
+
+        clientName.value = "" 
+        clientRg.value = "" 
+        clientPhone.value = ""  
+        clientEmail.value = ""  
+        carBoard.value = ""  
+        registerPlan.value = ""  
 
     }
 
     const register = async () => {
         const idClient = await registerClient()
         const idCar = await registerCar(idClient)
-        console.log(idCar)
         registerEntry(idCar)
     }
 
@@ -215,7 +245,10 @@ const registerEntry = async () => {
         carBoard.value = board.toUpperCase()
     }
 
+    loadTableEntrys()
+    loadOptionsVacancies()
 
+    registerVacancies.addEventListener("change", setPlan)
     entryButton.addEventListener("click", register)
     clientPhone.addEventListener("input", phoneMask)
     clientRg.addEventListener("input", rgMask)

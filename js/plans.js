@@ -81,7 +81,7 @@ const createCardPlans = (plan) => {
   const plansCardInfoDaily = document.createElement("p")
 
   plansCardHeaderTitle.textContent = `${plan.nome}`
-  plansCardInfoFirstHour.textContent = `Primeria Hora: R$ ${plan.primeiraHora}`
+  plansCardInfoFirstHour.textContent = `Primeira Hora: R$ ${plan.primeiraHora}`
   plansCardInfoOutherHours.textContent = `Demais Hora: R$ ${plan.horaAdicional}`
   plansCardInfoDaily.textContent = `Diária: R$ ${plan.diaria}`
 
@@ -105,7 +105,6 @@ const createCardPlans = (plan) => {
 
   plansCard.appendChild(plansCardHeader)
   plansCard.appendChild(plansCardInfo)
-
 
   return plansCard
 }
