@@ -11,13 +11,14 @@ const exitRegister = async () => {
 
     const getCars = async () => {
 
-        const url = "http://localhost/estacionamento/projetoEstacionamento/api/veiculos/listar/";
+        const url = "http://localhost/estacionamento/projetoEstacionamento/api/veiculos/estacionados/";
         const response = await fetch(url);
         const data = await response.json();
         return data
     }
 
     const getRegisterByBoard = async (board) => {
+
         const url = "http://localhost/estacionamento/projetoEstacionamento/api/registros/buscar/" + board;
         const response = await fetch(url);
         const data = await response.json();
@@ -25,7 +26,6 @@ const exitRegister = async () => {
     }
 
     const getExitRegisters = async () => {
-        console.log("get")
         const url = "http://localhost/estacionamento/projetoEstacionamento/api/registros/saida";
         const response = await fetch(url);
         const data = await response.json();
@@ -45,19 +45,15 @@ const exitRegister = async () => {
     }
 
     const registerExit = async () => {
-        console.log(selectedClient)
-        console.log(selectedRegister)
 
         const updateRegister = {
-            horaEntrada: selectedClient.horaentrada,
-            diaEntrada: selectedClient.diaentrada,
+            horaEntrada: selectedClient.horaEntrada,
+            diaEntrada: selectedClient.diaEntrada,
             precoFinal: selectedClient.valorTotal,
             idVagas: selectedClient.idVaga,
             idVeiculo: selectedClient.idVeiculo
         }
-
-
-
+        
         const url = 'http://localhost/estacionamento/projetoEstacionamento/api/registros/' + selectedRegister;
         const options = {
             "method": 'PUT',
@@ -75,7 +71,6 @@ const exitRegister = async () => {
         exitBoards.replaceChildren()
         exitBoards.value = ""
 
-
         exitForm.replaceChildren()
         exitFormButton.replaceChildren()
 
@@ -89,18 +84,17 @@ const exitRegister = async () => {
             <th>Hora Saída</th>
         </tr>
         `
-        createExitTable()
-        createOptions()
+
+        await createExitTable()
+        await createOptions()
 
     }
 
     const createForm = async (event) => {
-
+        
         [selectedBoard, selectedRegister] = event.target.value.split(',')
 
         selectedClient = await getRegisterByBoard(selectedBoard)
-
-        console.log(selectedClient)
 
         exitForm.innerHTML = `
         <div class="exit-form-camp">
@@ -118,13 +112,13 @@ const exitRegister = async () => {
     <div class="exit-form-camp">
         <p>Hora entrada:</p>
         <div class="exit-form-camp-result">
-            <p>${selectedClient.horaentrada}</p>
+            <p>${selectedClient.horaEntrada}</p>
         </div>
     </div>
     <div class="exit-form-camp">
         <p>Dia Entrada:</p>
         <div class="exit-form-camp-result">
-            <p>${selectedClient.diaentrada}</p>
+            <p>${selectedClient.diaEntrada}</p>
         </div>
     </div>
     
@@ -188,17 +182,18 @@ const exitRegister = async () => {
 
         const exitClients = await getExitRegisters()
 
-        exitClients.map(registry => {
-            createExit(registry)
-        })
+        if (exitClients.idErro == "404") {
+            console.log("Não forma encontrados registros de saída")
+            return
+        }
+
+        exitClients.map(registry => { createExit(registry) })
 
     }
 
     const boards = await getCars()
-
-
-    createExitTable()
-    createOptions()
+    await createExitTable()
+    await createOptions()
 
 
 

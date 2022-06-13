@@ -1,0 +1,128 @@
+.entry-modal {
+  background-color: #0005;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.entry-modal-none {
+  display: none;
+}
+
+.modal-card {
+  width: 30%;
+  height: 60%;
+  background-color: var(--gray);
+  border-radius: 20px;
+  border: 2px solid var(--white);
+}
+
+.modal-header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+}
+
+.modal-header-title {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
+}
+
+.modal-header-title > p {
+  font-size: clamp(8px, 1.5vw, 24px);
+  color: var(--white);
+}
+
+.modal-header-exit {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  background-color: var(--white);
+  border-radius: 0px 12px 0px 20px;
+  transition: .4s;
+}
+
+.modal-header-exit:hover {
+    background-color: #cecece
+  }
+
+.modal-header-exit > p {
+    font-size: clamp(10px, 2vw, 40px);
+    font-weight: 500;
+}
+
+.modal-parking-informations {
+    width: 100%;
+    height: 40%;
+    
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.modal-parking-informations > p:nth-child(1) {
+    font-size: clamp(10px, 2vw, 20px);
+    font-weight: 500;
+}
+.modal-parking-informations > p {
+    font-size: clamp(5px, 2vw, 14px);
+    font-weight: 500;
+}
+
+.modal-footer-informations {
+    width: 100%;
+    height: 50%;
+    
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-client-information {
+    width: 80%;
+    height: 100%;
+
+    display: flex;
+    align-items: left;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    padding-left: 40px;
+}
+
+.modal-print {
+    width: 20%;
+    height: 100%;
+
+    padding-bottom: 10%;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.modal-print-image {
+    width: 50%;
+    height: 30%;
+}
+
+.modal-print-image > img{
+    width: 100%;
+    height: 100%;
+}
+  

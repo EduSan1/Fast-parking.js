@@ -1,33 +1,4 @@
-
-// = [{
-//     nomeCliente: "",
-//     placa: "",
-//     telefoneCliente: "",
-//     vaga: "",
-//     idRegistro: 0
-// },
-// {
-//     nomeCliente: "",
-//     placa: "",
-//     telefoneCliente: "",
-//     vaga: "",
-//     idRegistro: 0
-// },
-// {
-//     nomeCliente: "",
-//     placa: "",
-//     telefoneCliente: "",
-//     vaga: "",
-//     idRegistro: 0
-// },
-// {
-//     nomeCliente: "",
-//     placa: "",
-//     telefoneCliente: "",
-//     vaga: "",
-//     idRegistro: 0
-// }]
-
+import {openModal} from "./modal.js"
 
 const registerEntry = async () => {
 
@@ -40,7 +11,7 @@ const registerEntry = async () => {
     const registerPlan = document.getElementById("entryPlans")
     const registerVacancies = document.getElementById("entryVacancies")
     const entryTable = document.getElementById("entryTable")
-
+entryPlans
     const createEntryTable = (entry) => {
 
         const tr = document.createElement("tr")
@@ -109,18 +80,16 @@ const registerEntry = async () => {
 
     const setPlan = async (event) => {
 
-        console.log(event.target.value)
-
         let url = "http://localhost/estacionamento/projetoEstacionamento/api/vagas/" + event.target.value;
         let response = await fetch(url);
         let data = await response.json();
-        console.log(data)
+
         const idPLan = data.idPlano
 
         url = "http://localhost/estacionamento/projetoEstacionamento/api/planos/" + idPLan;
         response = await fetch(url);
         data = await response.json();
-        console.log(data)
+
         registerPlan.textContent = data.nome
     }
     const checkFields = () => {
@@ -206,9 +175,19 @@ const registerEntry = async () => {
 
         }
 
-        const response = await fetch(url, options)
-        const data = await response.json()
-        alert(data.message)
+        const client = {
+            clientName : clientName.value,
+            clientRg : clientRg.value,
+            clientPhone : clientPhone.value,
+            carBoard : carBoard.value,
+            registerPlan : registerPlan.textContent,
+            registerVacancies : registerVacancies.value
+        }
+
+        openModal(client)
+
+        await fetch(url, options)
+
 
         entryTable.innerHTML = `  
         <tr class="entry-reister-table-title">

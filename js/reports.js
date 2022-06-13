@@ -1,64 +1,68 @@
-const reportWeek =
-{
-    totalCarros: 200,
-    valorTotal: 1500.0
-};
+const reports = async () => {
 
-const reportMonth =
-{
-    totalCarros: 400,
-    valorTotal: 12312421.0
-};
-
-const reportYear =
-{
-    totalCarros: 1243214,
-    valorTotal: 3000000.0
-};
-
-const reports = () => {
+    const verificationDate = (date) => {
+        if (date <10) {
+            return "0" + date
+        }else 
+            return date
+    }
 
     const now = new Date
     let dataInicioSemanal = ""    
-    const mesAtual = now.getMonth() +1
+    const mesAtual = verificationDate(now.getMonth() +1)
     const lastYear = now.getFullYear() - 1
+    const diaAtual = verificationDate(now.getDate())
 
     if (now.getDate() < 8) {
 
         let cont = now.getDate()
-        const MesInicio = now.getMonth()
+        let MesInicio = now.getMonth()
         const AnoInicio = now.getFullYear()
 
         for (let index = 7; index > 0; index--) {
             cont -= 1
         }
-        const diaInicio = 30 + cont
+        let diaInicio = 30 + cont
 
-        dataInicioSemanal = AnoInicio + "-" + MesInicio + "-" + diaInicio
+        dataInicioSemanal = AnoInicio + "-" + verificationDate(MesInicio) + "-" + verificationDate(diaInicio)
+        console.log(dataInicioSemanal)
 
     } else {
-        const diaInicio = now.getDate() - 7
-        const MesInicio = now.getMonth() + 1
+        let diaInicio = now.getDate() - 7
+        let MesInicio = now.getMonth() + 1
         const AnoInicio = now.getFullYear()
 
-        dataInicioSemanal = AnoInicio + "-" + MesInicio + "-" + diaInicio
-
+        dataInicioSemanal = AnoInicio + "-" + verificationDate(MesInicio) + "-" + verificationDate(diaInicio)
+        console.log(dataInicioSemanal)
     }
 
-    const getIntervalSemanal = {
+    const intervalWeekly = {
         "dataInicio" : dataInicioSemanal,
-        "dataFim" : now.getFullYear()+ "-" + mesAtual + "-" + now.getDate() 
+        "dataFim" : now.getFullYear()+ "-" + mesAtual + "-" + diaAtual
+    }
+    
+    const intervalMonthly = {
+        "dataInicio" : now.getFullYear()+ "-" + verificationDate(now.getMonth()) + "-" + diaAtual ,
+        "dataFim" : now.getFullYear()+ "-" + mesAtual + "-" + diaAtual
     }
 
-    const getIntervalMensal = {
-        "dataInicio" : now.getFullYear()+ "-" + now.getMonth() + "-" + now.getDate() ,
-        "dataFim" : now.getFullYear()+ "-" + mesAtual + "-" + now.getDate() 
+    const intervalYearly = {
+        "dataInicio" : lastYear + "-" + mesAtual + "-" + diaAtual ,
+        "dataFim" : now.getFullYear()+ "-" + mesAtual + "-" + diaAtual 
     }
 
-    const getIntervalAnual = {
-        "dataInicio" : lastYear + "-" + now.getMonth() + "-" + now.getDate() ,
-        "dataFim" : now.getFullYear()+ "-" + mesAtual + "-" + now.getDate() 
+    const getInterval = async ( dataInicio , dataFim ) => {
+
+        const url = "http://localhost/estacionamento/projetoEstacionamento/api/registros/relatorio/" + dataInicio + "/" + dataFim;
+        const response = await fetch(url);
+        const data = await response.json();
+        return data
+
     }
+
+    const reportWeek = await getInterval(intervalWeekly.dataInicio, intervalWeekly.dataFim)
+    const reportMonth = await getInterval(intervalMonthly.dataInicio, intervalMonthly.dataFim)
+    const reportYear = await getInterval(intervalYearly.dataInicio, intervalYearly.dataFim)
 
     const profitWeek = document.getElementById("profitWeek")
     const profitMonth = document.getElementById("profitMonth")
@@ -67,12 +71,12 @@ const reports = () => {
     const enterMonth = document.getElementById("enterMonth")
     const enterYear = document.getElementById("enterYear")
 
-    enterWeek.textContent = `${reportWeek.totalCarros}`
-    enterMonth.textContent = `${reportMonth.totalCarros}`
-    enterYear.textContent = ` ${reportYear.totalCarros}`
-    profitWeek.textContent = `${reportWeek.valorTotal}`
-    profitMonth.textContent = `${reportMonth.valorTotal}`
-    profitYear.textContent = ` ${reportYear.valorTotal}`
+    enterWeek.textContent = `${reportWeek[0].veiculosEstacionados}`
+    enterMonth.textContent = `${reportMonth[0].veiculosEstacionados}`
+    enterYear.textContent = ` ${reportYear[0].veiculosEstacionados}`
+    profitWeek.textContent = `${reportWeek[0].valorTotal}`
+    profitMonth.textContent = `${reportMonth[0].valorTotal}`
+    profitYear.textContent = ` ${reportYear[0].valorTotal}`
 };
 
 export { reports };
