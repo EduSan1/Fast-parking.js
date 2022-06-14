@@ -45,5 +45,3 @@ Projeto sugerido pelos professores Marcel e [Fernando Leonid](https://github.com
     </td>
   </tr>
 </table>
-
-## :warning: Em andamento :warning:
