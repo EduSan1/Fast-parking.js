@@ -64,6 +64,8 @@ const exitRegister = async () => {
 
         }
 
+        console.log(updateRegister)
+
         const response = await fetch(url, options)
         const data = await response.json()
         alert(data.message)
