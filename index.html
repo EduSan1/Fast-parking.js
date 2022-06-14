@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="assets/images/logo.png">
+    <link rel="icon" href="assets/images/logo.png" />
     <link rel="stylesheet" href="style/reset.css" />
     <link rel="stylesheet" href="style/index.css" />
 
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="style/menu.css" />
     <link rel="stylesheet" href="style/container.css" />
     <link rel="stylesheet" href="style/entryRegister.css" />
-    <link rel="stylesheet" href="style/modal.css">
+    <link rel="stylesheet" href="style/modal.css" />
     <script src="js/shortcuts/shortcuts.js" type="module" defer></script>
     <script src="js/entryRegister.js" type="module" defer></script>
     <script src="js/moveCar.js" type="module" defer></script>
@@ -31,7 +31,7 @@
     <title>Fast Parking</title>
   </head>
 
-  <body >
+  <body>
     <div id="entryModal" class="entry-modal-none">
       <div class="modal-card">
         <div class="modal-header">
@@ -43,23 +43,26 @@
           </div>
         </div>
         <div class="modal-parking-informations">
-          <p>Fast Park</p>
-          <p>R. Guilherme Lino dos Santos, 1418 - Jardim Flor do Campo, Guarulhos - SP, 07190-010</p>
+          <p id="parkingTitle">Fast Parking</p>
+          <p id="parkingAddress">
+            R. Guilherme Lino dos Santos, 1418 - Jardim Flor do Campo, Guarulhos
+            - SP, 07190-010
+          </p>
           <p>Aberto 24hrs</p>
-          <p>telefone: (11) 99999-9999</p>
+          <p id="parkingPhone">telefone: (11) 99999-9999</p>
         </div>
         <div class="modal-footer-informations">
           <div class="modal-client-information">
-            <p>Nome cliente: Eduardo Santos Nascimento</p>
-            <p>Placa: ASD-1234</p>
-            <p>Dia entrada: 23/12/2002</p>
-            <p>Hora entrada: 12:34</p>
-            <p>Vaga: A234</p>
-            <p>Plano: Gold</p>
+            <p>Nome cliente:<span id="modalClientName" > Eduardo Santos Nascimento</span></p>
+            <p>Placa:<span id="modalCarBoard" > ASD-1234</span></p>
+            <p>Dia entrada:<span id="modalEntryDay" >23/12/2002</span> </p>
+            <p>Hora entrada:<span id="modalEntryHour" > 12:34</span></p>
+            <p>Vaga:<span  id="modalVacancie" >A234</span> </p>
+            <p>Plano:<span id="modalPlan">Gold</span> </p>
           </div>
           <div class="modal-print">
             <div class="modal-print-image">
-              <img src="./assets/icons/imprimir.png" alt="">
+              <img src="./assets/icons/imprimir.png" alt="" />
             </div>
           </div>
         </div>
@@ -116,8 +119,6 @@
         </div>
       </div>
     </div>
-    <div id="container" class="main-container">
-     
-    </div>
+    <div id="container" class="main-container"></div>
   </body>
 </html>

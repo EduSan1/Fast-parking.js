@@ -11,7 +11,6 @@ const registerEntry = async () => {
     const registerPlan = document.getElementById("entryPlans")
     const registerVacancies = document.getElementById("entryVacancies")
     const entryTable = document.getElementById("entryTable")
-entryPlans
     const createEntryTable = (entry) => {
 
         const tr = document.createElement("tr")
@@ -175,7 +174,7 @@ entryPlans
 
         }
 
-        const client = {
+        const entryInformations = {
             clientName : clientName.value,
             clientRg : clientRg.value,
             clientPhone : clientPhone.value,
@@ -184,7 +183,7 @@ entryPlans
             registerVacancies : registerVacancies.value
         }
 
-        openModal(client)
+        openModal(entryInformations)
 
         await fetch(url, options)
 
